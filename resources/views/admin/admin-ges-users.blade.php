@@ -21,12 +21,14 @@
         </div>
 
         <div class="items">
-            <li class="active"><i class="fa-solid fa-chart-pie"></i><a href={{ route('admin-dashboard') }}>Tableau de bord</a></li>
+            <li><i class="fa-solid fa-chart-pie"></i><a href={{ route('admin-dashboard') }}>Tableau de bord</a></li>
             {{-- <li><iclass="fasfa-users-line"></i><ahref="admin-reservation.html">Reservationclients</a></li> --}}
             <li><i class="fa-solid fa-location-pin"></i><a href="{{ route('admin-destinations') }}">Gestion des destination</a></li>
+            <li class=""><i class="fa-solid fa-city"></i><a href="{{ route('admin-index-ville') }}">Gestion des villes</a></li>
+            <li><i class="fa-solid fa-warehouse"></i><a href="{{ route('admin-index-gare') }}">Gestion des gares</a></li>
             {{-- <li><iclass="fa-solidfa-money-bill"></i><ahref="admin-ges-tarifs.html">Gestiondestarifs</a></li> --}}
-            <li><i class="fa-solid fa-users"></i></i><a href="{{ route('admin-users') }}">Gestion des utilisateurs</a></li>
-            <li><i class="fa-solid fa-user-gear"></i></i><a href="{{ route('admin-users') }}">Mon compte</a></li>
+            <li class="active"><i class="fa-solid fa-users"></i></i><a href="{{ route('admin-users') }}">Gestion des utilisateurs</a></li>
+            <li><i class="fa-solid fa-user-gear"></i></i><a href="{{ route('admin-my-account') }}">Mon compte</a></li>
             <form method="POST" action={{ route('logout') }} id="form-logout">
                 @csrf
                 <li id="logout" onclick="event.preventDefault(); document.getElementById('form-logout').submit();"><i class="fa-solid fa-right-from-bracket"></i><a href="{{ route('logout') }}">Déconnexion</a></li>
@@ -43,9 +45,6 @@
                 <div class="title">
                     <h3><span>ZOE</span> <span>T & L</span></h3>
                 </div>
-            </div>
-            <div class="profile">
-                <img src="img/profile/profile.png" alt="">
             </div>
         </div>
 
@@ -129,12 +128,18 @@
                             @endif
                         </td>
                         <td>
-                            @if($user->actif == 0)
-                                <a href="">Activer l'utilisateur</a>
+                            {{--@if($user->actif == 0)
+                                <a title="Activer l'utilisateur" href="{{ route('admin.user.lock', $user->id) }}"><i class="fa fa-user-lock"></i></a>
                             @elseif($user->actif == 1)
-                                <a href="">Désactiver l'utilisateur</a>
+                                <a title="Désactiver l'utilisateur" href="{{ route('admin.user.lock', $user->id) }}"><i class="fa fa-user-check"></i></a>
+                            @endif--}}
+
+                            @if($user->rule_id == 2)
+                                <a title="Nommer client" href="{{ route('admin-user-role', $user->id) }}"><i class="fa fa-user-crown"></i></a>
+                            @elseif($user->rule_id == 2)
+                                <a title="Nommer admin" href="{{ route('admin-user-role', $user->id) }}"><i class="fa fa-user"></i></a>
                             @endif
-                            <a href="">Changer de role</a>
+
                         </td>
                     </tr>
                     @endforeach

@@ -79,7 +79,7 @@
                             <div class="tarif-content">
                                 <div class="location">
                                     <h4>{{ $value->ville_d }} <i class="fa fa-arrow-right"></i> {{ $value->ville_a }} </h4>
-                                    <p><i class="fa-regular fa-clock"></i> {{ $value->heure_d }} - {{ $value->heure_a }}</p>
+                                    <p><i class="fa-regular fa-clock"></i> {{ $value->heure_d }} à {{ $value->heure_a }}</p>
                                 </div>
                                 <div class="price-dest">
                                     <h3>{{ $value->price }} <span>FCFA</span></h3>

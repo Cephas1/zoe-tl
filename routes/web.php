@@ -56,18 +56,24 @@ Route::prefix('admin')->middleware('auth')->group(function (){
 
     Route::get('/tarifs', [AdminsController::class, 'tarifs'])->name('admin-tarifs');
 
-    Route::get('/travel-status/{id}/{status}', [AdminsController::class, 'changeTravelStatus'])->name('admin-change-status');
+    Route::get('/travel-status/{id}/{status}', [AdminsController::class, 'changeTravelStatus'])->name('admin.change.status');
 
+    Route::get('/gares', [AdminsController::class, 'indexGares'])->name('admin-index-gare');
+    Route::post('/gare/create', [AdminsController::class, 'createGare'])->name('admin-create-gare');
     Route::post('/gare/edit/{id}', [AdminsController::class, 'editGare'])->name('admin-edit-gare');
-    Route::delete('/gare/delete/{id}', [AdminsController::class, 'deleteGare'])->name('admin-delete-gare');
+    Route::get('/gare/delete/{id}', [AdminsController::class, 'deleteGare'])->name('admin-delete-gare');
 
+    Route::get('/villes', [AdminsController::class, 'indexVilles'])->name('admin-index-ville');
+    Route::post('/ville/create', [AdminsController::class, 'createVille'])->name('admin-create-ville');
     Route::post('/ville/edit/{id}', [AdminsController::class, 'editVille'])->name('admin-edit-ville');
-    Route::delete('/ville/delete/{id}', [AdminsController::class, 'deleteVille'])->name('admin-delete-ville');
+    Route::get('/ville/delete/{id}', [AdminsController::class, 'deleteVille'])->name('admin-delete-ville');
 
     Route::get('/utilisateurs', [AdminsController::class, 'users'])->name('admin-users');
     Route::get('/mon-compte', [AdminsController::class, 'user'])->name('admin-my-account');
     Route::post('/update-user', [AdminsController::class, 'updateUser'])->name('admin-update-user');
     Route::delete('/users/{id}', [AdminsController::class, 'destroy'])->name('admin-delete-user');
+    Route::get('/user/lock/{id}', [AdminsController::class, 'lockUnlockUser'])->name('admin.user.lock');
+    Route::get('/user/{id}', [AdminsController::class, 'roleUser'])->name('admin-user-role');
     Route::post('/users/{id}', [AdminsController::class, 'updatePassword'])->name('admin-update-password');
 
 });

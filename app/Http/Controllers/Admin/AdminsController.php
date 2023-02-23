@@ -70,6 +70,23 @@ class AdminsController extends Controller
 
     }
 
+    public function indexVilles()
+    {
+        return view('admin.admin-ges-villes', ['villes' => Ville::all()]);
+    }
+
+    public function createVille(Request $request)
+    {
+        $ville = new Ville();
+        $ville->create(['name' => $request->ville]);
+
+        if ($ville) {
+            return back()->within('status', 'Ville créée avec succès!');
+        } else {
+            return back()->within('status', 'Ville non créée, réessayez!');
+        }
+    }
+
     public function editVille($id, Request $request)
     {
         $ville = Ville::find($id);
@@ -92,6 +109,23 @@ class AdminsController extends Controller
             return back()->within('status', 'Ville non supprimée, réessayez!');
         }
 
+    }
+
+    public function indexGares()
+    {
+        return view('admin.admin-ges-gares', ['gares' => Gare::all()]);
+    }
+
+    public function createGare(Request $request)
+    {
+        $gare = new Gare();
+        $gare->create(['name' => $request->gare]);
+
+        if ($gare) {
+            return back()->within('status', 'Gare créée avec succès!');
+        } else {
+            return back()->within('status', 'Gare non créée, réessayez!');
+        }
     }
 
     public function editGare($id, Request $request)
@@ -186,7 +220,9 @@ class AdminsController extends Controller
                                                     'villes'=>$villes,
                                                     'gares'=>$gares]);
     }
+
     public function indexUtilisateurs(){}
+
     public function indexMonCompte(){}
 
 
@@ -212,6 +248,34 @@ class AdminsController extends Controller
 
         return view('admin.admin-mon-compte', ['user'=>$user]);
 
+    }
+
+    public function lockUnlockUser($id){
+        $user = User::find($id);
+
+        if($user->actif == 0){
+            $user->actif = 1;
+            $user->update();
+        }elseif ($user->actif == 1) {
+            $user->actif = 0;
+            $user->update();
+        }
+
+        return Redirect::back()->with('status', 'Utilisateur activé/desactivé avec succès');
+    }
+
+    public function roleUser($id){
+        $user = User::find($id);
+
+        if($user->rule_id == 3){
+            $user->rule_id = 2;
+            $user->update();
+        }elseif ($user->rule_id == 2) {
+            $user->rule_id = 3;
+            $user->update();
+        }
+
+        return Redirect::back()->with('status', 'Rôle d\'utilisateur changé avec succès');
     }
 
     public function updateUser(Request $request)
@@ -261,9 +325,14 @@ class AdminsController extends Controller
 
     public function changeTravelStatus($id, $status){
         $travel = Travel::find($id);
-        $travel->state = $status;
 
-        if($travel->save){
+        if($status === "null"){
+            $travel->state = null;
+        }else{
+            $travel->state = $status;
+        }
+
+        if($travel->update()){
             return back()->with('status', 'Statut du voyage changé avec succès !');
         }else{
             return back()->with('status', 'Statut non modifié, réessayez !!');

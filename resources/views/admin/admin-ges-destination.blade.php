@@ -23,10 +23,12 @@
         <div class="items">
             <li ><i class="fa-solid fa-chart-pie"></i><a href={{ route('admin-dashboard') }}>Tableau de bord</a></li>
             {{-- <li><iclass="fasfa-users-line"></i><ahref="admin-reservation.html">Reservationclients</a></li> --}}
-            <li class="active"><i class="fa-solid fa-location-pin"></i><a href="{{ route('admin-destinations') }}">Gestion des destination</a></li>
+            <li class="active"><i class="fa-solid fa-location-pin"></i><a href={{ route('admin-destinations') }}>Gestion des destination</a></li>
+            <li class=""><i class="fa-solid fa-city"></i><a href="{{ route('admin-index-ville') }}">Gestion des villes</a></li>
+            <li><i class="fa-solid fa-warehouse"></i><a href="{{ route('admin-index-gare') }}">Gestion des gares</a></li>
             {{-- <li><iclass="fa-solidfa-money-bill"></i><ahref="admin-ges-tarifs.html">Gestiondestarifs</a></li> --}}
             <li><i class="fa-solid fa-users"></i></i><a href="{{ route('admin-users') }}">Gestion des utilisateurs</a></li>
-            <li><i class="fa-solid fa-user-gear"></i></i><a href="{{ route('admin-users') }}">Mon compte</a></li>
+            <li><i class="fa-solid fa-user-gear"></i></i><a href="{{ route('admin-my-account') }}">Mon compte</a></li>
             <form method="POST" action={{ route('logout') }} id="form-logout">
                 @csrf
                 <li id="logout" onclick="event.preventDefault(); document.getElementById('form-logout').submit();"><i class="fa-solid fa-right-from-bracket"></i><a href="{{ route('logout') }}">Déconnexion</a></li>

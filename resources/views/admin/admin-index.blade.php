@@ -24,6 +24,8 @@
             <li class="active"><i class="fa-solid fa-chart-pie"></i><a href={{ route('admin-dashboard') }}>Tableau de bord</a></li>
             {{-- <li><iclass="fasfa-users-line"></i><ahref="admin-reservation.html">Reservationclients</a></li> --}}
             <li><i class="fa-solid fa-location-pin"></i><a href="{{ route('admin-destinations') }}">Gestion des destination</a></li>
+            <li ><i class="fa-solid fa-city"></i><a href="{{ route('admin-index-ville') }}">Gestion des villes</a></li>
+            <li><i class="fa-solid fa-warehouse"></i><a href="{{ route('admin-index-gare') }}">Gestion des gares</a></li>
             {{-- <li><iclass="fa-solidfa-money-bill"></i><ahref="admin-ges-tarifs.html">Gestiondestarifs</a></li> --}}
             <li><i class="fa-solid fa-users"></i></i><a href="{{ route('admin-users') }}">Gestion des utilisateurs</a></li>
             <li><i class="fa-solid fa-user-gear"></i></i><a href="{{ route('admin-my-account') }}">Mon compte</a></li>
@@ -106,6 +108,7 @@
                         <td>Tarifs</td>
                         <td>Statut</td>
                         <td>Demandeur</td>
+                        <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -131,21 +134,15 @@
                                 <td class="people-price">
                                     <h5>{{ $value2->price }} FCFA</h5>
                                 </td>
-                                <td class="active">
+                                <td class="people-name">
                                     <div class="col-md-6 col-sm-12">
-                                        <div class="form-group">
-                                            <select name="city_start" id="city_start">
-                                                @if ($value2->state==0)
-                                                    <option value=""><p class="active">En attente</p></option>
-                                                @elseif ($value2->state==1)
-                                                    <option value=""><p class="active">Validé</p></option>
-                                                @elseif ($value2->state==null)
-                                                    <option value=""><p class="wait">Annulé</p></option>
-                                                @endif
-                                                <option><a href="{{ url('admin-change-status', [$value2->id, 1]) }}">Valider</a></option>
-                                                <option><a href="{{ url('admin-change-status', [$value2->id, null]) }}">Annuler</a></option>
-                                            </select>
-                                        </div>
+                                        @if ($value2->state==0)
+                                            <p class="active">En attente</p>
+                                        @elseif ($value2->state==1)
+                                            <p class="">Validé</p>
+                                        @elseif ($value2->state==null)
+                                            <p class="">Annulé</p>
+                                        @endif
                                     </div>
                                 </td>
                                 <td class="people">
@@ -154,10 +151,14 @@
                                         <p>{{ $value2->user_id->phone }}</p>
                                     </div>
                                 </td>
-                                {{--<td class="edit">
+                                <td class="edit">
                                     <!--<a href=""><i class="fa fa-eye"></i></a>-->
-                                    <a href=""><i class="fa fa-edit"></i></a>
-                                </td>--}}
+                                    <a title="Valider la reservation" href={{ url('admin/travel-status/'.$value2->id.'/1') }}><i class="fa fa-check"></i></a>
+                                    <a href=""><i class="fa fa-success"></i></a>
+                                    <a title="Mettre en attente" href={{ url('admin/travel-status/'.$value2->id.'/0') }}><i class="fa fa-spinner"></i></a>
+                                    <a href=""><i class="fa fa-success"></i></a>
+                                    <a title="Annuler la réservation" href={{ url('admin/travel-status/'.$value2->id.'/null') }}><i class="fa fa-trash"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                     @endforeach

@@ -104,9 +104,34 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 mb-3">
           <div class="contact">
+            <div class="col-md-12 col-sm-12 mt-3">
+                <div class="row text-center">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="address mt-1">
+                      <div class="min-title">
+                        ZOE T & L Pointe-Noire
+                      </div>
+                      <div class="min-desc">
+                        <p><span>Tel :</span> +242 05 513 05 80 / +242 06 569 07 72</p>
+                        <p><span>Mail :</span> contact@zoe-tl.com</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="address mt-1">
+                      <div class="min-title">
+                        ZOE T & L Brazzaville
+                      </div>
+                      <div class="min-desc">
+                        <p><span>Tel :</span> +242 05 513 05 70 / +242 06 569 07 57</p>
+                        <p><span>Mail :</span> contact@zoe-tl.com</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <div class="description">
-              Vous pouvez nous contacter par appel téléphonique, ou e-mail. Pour poser une question spécifique par mail,
-              veuillez utiliser le formulaire.
+              <br/>
             </div>
             <div class="form-contact">
               <form method="POST" action="{{ route('send-contact') }}" class="row">
@@ -151,32 +176,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-12 col-sm-12 mt-3">
-          <div class="row text-center">
-            <div class="col-md-6 col-sm-12">
-              <div class="address mt-1">
-                <div class="min-title">
-                  ZOE T & L Pointe-Noire
-                </div>
-                <div class="min-desc">
-                  <p><span>Tel :</span> 0278932372</p>
-                  <p><span>Mail :</span> contact@zoe.com</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-12">
-              <div class="address mt-1">
-                <div class="min-title">
-                  ZOE T & L Brazzaville
-                </div>
-                <div class="min-desc">
-                  <p><span>Tel :</span> 0278932372</p>
-                  <p><span>Mail :</span> contact@zoe.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
     <!-- /Contact -->

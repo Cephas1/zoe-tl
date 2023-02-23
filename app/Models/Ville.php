@@ -9,6 +9,8 @@ class Ville extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function destination_d(){
         return $this->belongsTo(destination::class, 'ville_d');
     }
