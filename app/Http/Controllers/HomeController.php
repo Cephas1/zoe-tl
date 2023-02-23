@@ -26,10 +26,10 @@ class HomeController extends Controller
 
             foreach ($villes as $key2 => $value2) {
 
-                if($value2->id === $value->ville_d){
+                if($value2->id == $value->ville_d){
 
                     $value->ville_d = $value2->name;
-                }elseif ($value2->id === $value->ville_a) {
+                }elseif ($value2->id == $value->ville_a) {
 
                     $value->ville_a = $value2->name;
                 }
