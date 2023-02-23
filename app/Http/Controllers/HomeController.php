@@ -28,10 +28,10 @@ class HomeController extends Controller
 
                 if($value2->id === $value->ville_d){
 
-                    $value->ville_d = $villes[$key2]->name;
+                    $value->ville_d = $value2->name;
                 }elseif ($value2->id === $value->ville_a) {
 
-                    $value->ville_a = $villes[$key2]->name;
+                    $value->ville_a = $value2->name;
                 }
             }
         }
