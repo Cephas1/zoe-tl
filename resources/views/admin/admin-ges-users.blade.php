@@ -135,8 +135,8 @@
                             @endif--}}
 
                             @if($user->rule_id == 2)
-                                <a title="Nommer client" href="{{ route('admin-user-role', $user->id) }}"><i class="fa fa-user-crown"></i></a>
-                            @elseif($user->rule_id == 2)
+                                <a title="Nommer client" href="{{ route('admin-user-role', $user->id) }}"><i class="fa fa-crown"></i></a>
+                            @elseif($user->rule_id == 3)
                                 <a title="Nommer admin" href="{{ route('admin-user-role', $user->id) }}"><i class="fa fa-user"></i></a>
                             @endif
 
